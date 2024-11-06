@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62); /* Gradient Background */
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #00e676; /* Highlight on hover */
+        }
+
+        .add-student {
+            display: inline-block;
+            background-color: #00bcd4;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        li {
+            background-color: rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons a {
+            background-color: #03a9f4;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons a:hover {
+            background-color: #2196f3;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Students</h1>
+    <div class="add-student">
+        <a href="{% url 'student_create' %}">Add Student</a>
+    </div>
+
+    <ul>
+        {% for student in students %}
+        <li>
+            <span>{{ student.name }}</span>
+            <div class="buttons">
+                <a href="{% url 'student_update' student.pk %}">Edit</a>
+                <a class="delete-btn" href="{% url 'student_delete' student.pk %}">Delete</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

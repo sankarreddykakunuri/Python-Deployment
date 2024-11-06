@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6e7f, #bfe9ff);
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #ff3d00;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #d50000;
+        }
+
+        .cancel-btn {
+            background-color: #29b6f6;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cancel-btn:hover {
+            background-color: #0288d1;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Delete Student</h1>
+    <p>Are you sure you want to delete "{{ student.name }}"?</p>
+
+    <div class="button-container">
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Confirm</button>
+        </form>
+        <a href="{% url 'student_list' %}" class="cancel-btn">Cancel</a>
+    </div>
+
+</body>
+</html>
